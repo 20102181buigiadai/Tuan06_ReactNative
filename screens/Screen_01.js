@@ -126,7 +126,7 @@ export default function App({ navigation, route }) {
             borderRadius: 10,
             borderWidth: 1
           }}
-          onPress={() => navigation.navigate("Screen2")}
+          onPress={() => navigation.navigate("Screen02")}
         >
           <Text style={{ fontSize: 16, fontWeight: 500 }}>4 MÀU-CHỌN MÀU</Text>
           <Image
