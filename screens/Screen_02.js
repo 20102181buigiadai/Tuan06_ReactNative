@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
-export default function App() {
+export default function App({ navigation, route }) {
+  const [colorImg, setColorImg] = useState(route.params.color);
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
       <View
@@ -18,10 +19,7 @@ export default function App() {
         <View
           style={{ flex: 3, justifyContent: "center", alignItems: "center" }}
         >
-          <Image
-            source={require("../assets/vs_blue.png")}
-            style={{ width: 112, height: 132 }}
-          />
+          <Image source={colorImg} style={{ width: 112, height: 132 }} />
         </View>
         <View style={{ flex: 7, height: "60%", justifyContent: "flex-start" }}>
           <Text style={{ fontSize: 16, fontWeight: 600 }}>
@@ -54,7 +52,12 @@ export default function App() {
             gap: 10
           }}
         >
-          <TouchableOpacity style={{ flex: 1 }}>
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => {
+              setColorImg(require("../assets/vs_silver.png"));
+            }}
+          >
             <View
               style={{
                 width: 85,
@@ -64,7 +67,12 @@ export default function App() {
               }}
             ></View>
           </TouchableOpacity>
-          <TouchableOpacity style={{ flex: 1 }}>
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => {
+              setColorImg(require("../assets/vs_red.png"));
+            }}
+          >
             <View
               style={{
                 width: 85,
@@ -74,7 +82,12 @@ export default function App() {
               }}
             ></View>
           </TouchableOpacity>
-          <TouchableOpacity style={{ flex: 1 }}>
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => {
+              setColorImg(require("../assets/vs_black.png"));
+            }}
+          >
             <View
               style={{
                 width: 85,
@@ -84,7 +97,12 @@ export default function App() {
               }}
             ></View>
           </TouchableOpacity>
-          <TouchableOpacity style={{ flex: 1 }}>
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => {
+              setColorImg(require("../assets/vs_blue.png"));
+            }}
+          >
             <View
               style={{
                 width: 85,
@@ -114,6 +132,9 @@ export default function App() {
               borderRadius: 10,
               borderWidth: 1,
               borderBlockColor: "#CA1536"
+            }}
+            onPress={() => {
+              navigation.navigate("Screen01", { color: colorImg });
             }}
           >
             <Text style={{ fontSize: 18, fontWeight: 600, color: "white" }}>

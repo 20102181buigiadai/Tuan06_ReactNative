@@ -2,16 +2,22 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
 export default function App({ navigation, route }) {
+  //Kiểm tra màu
+  const colorImg =
+    route.params && route.params.color
+      ? route.params.color
+      : require("../assets/vs_blue.png");
+
   return (
     <View style={{ flex: 1 }}>
-      {/* Phần hiển thị hình ảnh điện thoại */}
+      {/* Hình ảnh điện thoại */}
       <View style={{ flex: 5, justifyContent: "center", alignItems: "center" }}>
         <Image
           style={{ width: "100%", height: "100%", resizeMode: "contain" }}
-          source={require("../assets/vs_blue.png")}
+          source={colorImg}
         />
       </View>
-      {/* Phần hiển thị thông tin điện thoại */}
+      {/* Thông tin điện thoại */}
       <View
         style={{
           flex: 2,
@@ -58,7 +64,7 @@ export default function App({ navigation, route }) {
           </Text>
         </View>
 
-        {/* Phần giá */}
+        {/*Giá*/}
         <View
           style={{
             flex: 1,
@@ -105,8 +111,7 @@ export default function App({ navigation, route }) {
           </TouchableOpacity>
         </View>
       </View>
-
-      {/* Phần nút chuyển màu và chọn mua */}
+      {/* 2 nút cuối */}
       <View
         style={{
           position: "relative",
@@ -126,7 +131,7 @@ export default function App({ navigation, route }) {
             borderRadius: 10,
             borderWidth: 1
           }}
-          onPress={() => navigation.navigate("Screen02")}
+          onPress={() => navigation.navigate("Screen02", { color: colorImg })}
         >
           <Text style={{ fontSize: 16, fontWeight: 500 }}>4 MÀU-CHỌN MÀU</Text>
           <Image
